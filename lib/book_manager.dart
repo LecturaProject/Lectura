@@ -36,11 +36,13 @@ class bookManager{
       for(int i=0;i<finishedBooks.length;i++)
           if(title==finishedBooks[i].name){
               finishedBooks.removeAt(i);
+              listawid.removeAt(i);
               return;
           }
       for(int i=0;i<unfinishedBooks.length;i++)
           if(title==unfinishedBooks[i].name){
             unfinishedBooks.removeAt(i);
+            listagata.removeAt(i);
             return;
           }
   }
@@ -52,7 +54,7 @@ class bookManager{
     b.readPages=min(b.pages,b.readPages+newPages);
     if(b.readPages==b.pages) {
         deleteBookByTitle(b.name);
-        finishedBooks.add(b);
+        bm.addBook(b);
     }
     changed.add(b);
     flush();

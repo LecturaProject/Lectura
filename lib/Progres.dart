@@ -5,7 +5,11 @@ class Progres extends StatefulWidget {
   @override
   _ProgresState createState() => new _ProgresState();
 }
-
+TextStyle stil20 = new TextStyle(
+  fontSize: 20,
+  fontFamily: 'Julius',
+  fontWeight: FontWeight.bold,
+);
 class _ProgresState extends State<Progres> {
   @override
   TextEditingController pageController = new TextEditingController();
@@ -17,7 +21,8 @@ class _ProgresState extends State<Progres> {
     return new Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
-        title: Text('Progres'),
+        backgroundColor:  Color.fromRGBO(40, 53, 234, 1),
+        title: Text('Progres',style : stil20,),
       ),
       body: Column(
         children: <Widget>[
@@ -27,11 +32,18 @@ class _ProgresState extends State<Progres> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(
-                  bookTitle,
-                style: new TextStyle(
-                  fontSize: 30,
-                  fontFamily: 'Julius',
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical:1 , horizontal: 10),
+                  child: Text(
+                      bookTitle,
+                    textAlign: TextAlign.center,
+                    style: new TextStyle(
+                      fontSize: 30,
+                      fontFamily: 'Julius',
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -44,13 +56,14 @@ class _ProgresState extends State<Progres> {
             children: <Widget>[
               CircleAvatar(
                 radius: 150,
-                backgroundColor: Colors.deepPurple[900],
+                backgroundColor: Color.fromRGBO(40, 234, 221, 0.8),
                 child: Text(
                   '    ' + (mynumber / NumberOfPages * 100).toStringAsPrecision(3) + ' %' + '\n' + '\n' + mynumber.toString() + ' din ' + NumberOfPages.toString(),
                   style: new TextStyle(
                     color: Colors.white,
                     fontSize: 40,
-                    fontFamily: 'Julius'
+                    fontFamily: 'Julius',
+                    fontWeight: FontWeight.w900,
                   ),
                 ),
               ),
@@ -100,7 +113,7 @@ class _ProgresState extends State<Progres> {
                });
         },
         child: Icon(Icons.add),
-        backgroundColor: Colors.green,
+        backgroundColor: Color.fromRGBO(40, 53, 234, 1),
       ),
         ],
       ),

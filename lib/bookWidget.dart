@@ -34,7 +34,7 @@ class _bookCardState extends State<bookCard> {
           IconButton(
               icon: Icon(
                 Icons.library_add,
-                color: Colors.green,
+                color: Color.fromRGBO(40, 234, 221, 1),
                 size: 40,
               ),
               onPressed: ()

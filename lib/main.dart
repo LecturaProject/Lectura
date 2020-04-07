@@ -8,7 +8,9 @@ import 'book_manager.dart';
 import 'dart:io';
 import 'books.dart';
 import 'toWidget.dart';
+
 void main() => runApp(MyApp());
+
 class MyApp extends StatelessWidget {
   final appTitle = 'lecTUra';
   void init() async {
@@ -47,7 +49,6 @@ class MyApp extends StatelessWidget {
     init();
     bm.printAll();
 
-
     return MaterialApp(
       title: appTitle,
       home: MyHomePage(title: appTitle),
@@ -55,16 +56,35 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+TextStyle stil20 = new TextStyle(
+  fontSize: 20,
+  fontFamily: 'Julius',
+  fontWeight: FontWeight.bold,
+);
 
+class MyHomePage extends StatelessWidget {
   final String title;
   MyHomePage({Key key, this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(title)),
-      body: Center(child: Text('My Page!')),
+      appBar: AppBar(
+        title: Text(
+          title,
+          style: stil20,
+        ),
+        backgroundColor: Color.fromRGBO(40, 53, 234, 1),
+      ),
+      body: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+        'Asistentul tau personal in materie de carti.',
+        style: stil20,
+              textAlign: TextAlign.center,
+      ),
+          )),
       drawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll
         // through the options in the drawer if there isn't enough vertical
@@ -74,13 +94,22 @@ class MyHomePage extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              child: Text('lecTUra'),
+              child: Text(
+                'lecTUra',
+                style: new TextStyle(
+                  fontSize: 35,
+                  fontFamily: 'Julius',
+                ),
+              ),
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Color.fromRGBO(40, 234, 221, 1),
               ),
             ),
             ListTile(
-              title: Text('Biblioteca'),
+              title: Text(
+                'Biblioteca',
+                style: stil20,
+              ),
               onTap: () {
                 Navigator.push(
                   context,
@@ -89,7 +118,10 @@ class MyHomePage extends StatelessWidget {
               },
             ),
             ListTile(
-              title: Text('Intrebari'),
+              title: Text(
+                'Intrebari',
+                style: stil20,
+              ),
               onTap: () {
                 Navigator.push(
                   context,
@@ -98,7 +130,10 @@ class MyHomePage extends StatelessWidget {
               },
             ),
             ListTile(
-              title: Text('Progres'),
+              title: Text(
+                'Progres',
+                style: stil20,
+              ),
               onTap: () {
                 Navigator.push(
                   context,
