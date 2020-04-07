@@ -32,8 +32,17 @@ class bookManager{
     }
     return new Book.fromEmpty();
   }
-  void deleteBook(Book b){
-
+  void deleteBookByTitle(String title){
+      for(int i=0;i<finishedBooks.length;i++)
+          if(title==finishedBooks[i].name){
+              finishedBooks.removeAt(i);
+              return;
+          }
+      for(int i=0;i<unfinishedBooks.length;i++)
+          if(title==unfinishedBooks[i].name){
+            unfinishedBooks.removeAt(i);
+            return;
+          }
   }
   void resetProgress(Book b){
       b.readPages=0;
@@ -41,6 +50,10 @@ class bookManager{
   }
   void addProgress(Book b,int newPages){
     b.readPages=min(b.pages,b.readPages+newPages);
+    if(b.readPages==b.pages) {
+        deleteBookByTitle(b.name);
+        finishedBooks.add(b);
+    }
     changed.add(b);
     flush();
   }
@@ -77,13 +90,13 @@ class bookManager{
   }
   void flush()async {
     for (int i = 0; i < changed.length; i++) {
-      Book cur = changed[i];
-      String titlu = cur.name,
-          author = cur.author;
-      int id = cur.id,
-          pages = cur.pages,
-          readPages = cur.readPages;
-      FileUtils.saveToFile(
+        Book cur = changed[i];
+        String titlu = cur.name,
+        author = cur.author;
+        int id = cur.id,
+        pages = cur.pages,
+        readPages = cur.readPages;
+        FileUtils.saveToFile(
           'books/$titlu.txt', '$id\n"$titlu"\n"$author"\n$pages\n$readPages');
     }
     changed.clear();
