@@ -84,7 +84,7 @@ class _ProgresState extends State<Progres> {
                                if (_formKey.currentState.validate()) {
                                  _formKey.currentState.save();
                                }
-                               mynumber += int.parse(pageController.text);
+                               mynumber = min(lastbook.pages,mynumber+int.parse(pageController.text));
                                bm.addProgress(lastbook ,int.parse(pageController.text) );
                                Navigator.pop(context);
                                setState(() {
