@@ -14,6 +14,7 @@ class Biblioteca extends StatelessWidget {
   final _formKey2 = GlobalKey<FormState>();
   TextEditingController pageController2 = new TextEditingController();
   TextEditingController pageController3 = new TextEditingController();
+  TextEditingController pageController4 = new TextEditingController();
   void init() {
     listawid.clear();
     listagata.clear();
@@ -92,7 +93,7 @@ class Biblioteca extends StatelessWidget {
                               EdgeInsets.symmetric(vertical: 0, horizontal: 10),
                           child: TextFormField(
                             decoration: new InputDecoration.collapsed(
-                                hintText: 'Titlu'),
+                                hintText: 'Titlu',hintStyle: stil20),
                             controller: pageController2,
                           ),
                         ),
@@ -101,21 +102,31 @@ class Biblioteca extends StatelessWidget {
                               EdgeInsets.symmetric(vertical: 0, horizontal: 10),
                           child: TextFormField(
                             decoration: new InputDecoration.collapsed(
-                                hintText: 'Numar de pagini'),
+                                hintText: 'Autor',hintStyle: stil20,),
                             controller: pageController3,
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                          child: TextFormField(
+                            decoration: new InputDecoration.collapsed(
+                              hintText: 'Numar de pagini',hintStyle: stil20,),
+                            controller: pageController4,
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: RaisedButton(
-                            child: Text("Am citit!"),
+                            child: Text("Adauga carte!",style:stil20,),
                             onPressed: () {
                               if (_formKey2.currentState.validate()) {
                                 _formKey2.currentState.save();
                               }
                               Book newbook = new Book.fromEmpty();
                               newbook.name = pageController2.text;
-                              newbook.pages = int.parse(pageController3.text);
+                              newbook.author = pageController3.text;
+                              newbook.pages = int.parse(pageController4.text);
                               bm.addBook(newbook);
                               Navigator.pop(context);
                             },

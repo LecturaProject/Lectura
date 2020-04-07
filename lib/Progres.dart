@@ -56,7 +56,7 @@ class _ProgresState extends State<Progres> {
             children: <Widget>[
               CircleAvatar(
                 radius: 150,
-                backgroundColor: Color.fromRGBO(40, 234, 221, 0.8),
+                backgroundColor: Color.fromRGBO(40, 234, 221, 1),
                 child: Text(
                   '    ' + (mynumber / NumberOfPages * 100).toStringAsPrecision(3) + ' %' + '\n' + '\n' + mynumber.toString() + ' din ' + NumberOfPages.toString(),
                   style: new TextStyle(
@@ -113,7 +113,7 @@ class _ProgresState extends State<Progres> {
                });
         },
         child: Icon(Icons.add),
-        backgroundColor: Color.fromRGBO(40, 53, 234, 1),
+        backgroundColor: Color.fromRGBO(40, 53, 234, 0.7),
       ),
         ],
       ),

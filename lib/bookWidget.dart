@@ -15,6 +15,7 @@ class _bookCardState extends State<bookCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color:  Colors.white,
       elevation: 8,
       margin: EdgeInsets.symmetric(vertical: 10, horizontal: 8),
       child: Row(
