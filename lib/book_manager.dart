@@ -18,14 +18,14 @@ class bookManager{
   Book findByTitle(String title){
     for(int i = 0 ; i < unfinishedBooks.length ; i ++)
       {
-        if(unfinishedBooks[i].name == title)
+        if(unfinishedBooks[i].name.trim() == title.trim())
           {
             return unfinishedBooks[i];
           }
       }
     for(int i = 0 ; i < finishedBooks.length ; i ++)
     {
-      if(finishedBooks[i].name == title)
+      if(finishedBooks[i].name == title.trim())
       {
         return finishedBooks[i];
       }
@@ -61,7 +61,7 @@ class bookManager{
   }
   void addBook(Book nb){
     Book aux=findByTitle(nb.name);
-    if(aux.name==nb.name)
+    if(aux.name.trim()==nb.name.trim())
       return;
       ad++;
     changed.add(nb);
@@ -104,6 +104,12 @@ class bookManager{
     changed.clear();
     if (ad >= 1) {
       int nr = unfinishedBooks.length + finishedBooks.length;
+      unfinishedBooks.sort((Book a,Book b){
+        return a.name.compareTo(b.name);
+      });
+      finishedBooks.sort((Book a,Book b){
+        return a.name.compareTo(b.name);
+      });
       String rez = "$nr\n";
       for (int i = 0; i < unfinishedBooks.length; i++) {
         String aux = unfinishedBooks[i].name;
@@ -114,10 +120,6 @@ class bookManager{
         rez += "\"$aux\"\n";
       }
       saveText('books.txt', rez);
-      printAll();
-      print("AAAAAAAAA");
-      print(await FileUtils.readFromFile('books.txt'));
-      print(rez);
       ad = 0;
     }
   }
