@@ -1,4 +1,4 @@
-# lectura
+# Lectura
 
 Aplicatie pentru management-ul cartilor citite sau in curs de citire . De asemenea , pentru unele carti din programa de BAC sau selectate de catre noi se gasesc si teste , in gen quiz , cu intrebari din fiecare opera. 
 
