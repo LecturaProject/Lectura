@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'Biblioteca.dart';
-import 'Intrebari.dart';
 import 'bookWidget.dart';
 import 'Progres.dart';
 import 'file_utils.dart';
@@ -10,37 +9,17 @@ import 'books.dart';
 import 'toWidget.dart';
 import 'intrebare.dart';
 import 'lista_intrebari.dart';
-
+import 'intrebari.dart';
+import 'package:lectura/IntrebariWidget.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   final appTitle = 'lecTUra';
   void init() async {
-    intrebari=new List<sInt>();
     String aux = await FileUtils.getFilePath;
     String data=await getFileData('assets/recomandate.txt');
     int ind=0,nr=0;
-    while(ind<data.length && data.codeUnitAt(ind)>='0'.codeUnitAt(0) && data.codeUnitAt(ind)<='9'.codeUnitAt(0)){
-        nr=nr*10+data.codeUnitAt(ind)-'0'.codeUnitAt(0);
-        ind++;
-    }
-    for(int i=1;i<=nr;i++){
-        String aux="";
-        while(ind<data.length && data.codeUnitAt(ind)!='"'.codeUnitAt(0))
-            ind++;
-        ind++;
-        while(ind<data.length && data.codeUnitAt(ind)!='"'.codeUnitAt(0)) {
-          aux+=data[ind];
-          ind++;
-        }
-        sInt a=new sInt();
-        a.titlu=aux;
-        aux=aux.replaceAll(" ", "");
-        String d1=await getFileData('assets/${aux}_intrebari.txt');
-        a.lint=getQuestions(d1);
-        ind++;
-        intrebari.add(a);
-    }
+
     
     new Directory('$aux/books').create().then((Directory directory) {
     });
@@ -66,6 +45,30 @@ class MyApp extends StatelessWidget {
       bm.addBook(newBook(content));
     }
     lastbook = bm.unfinishedBooks[0];
+
+    while(ind<data.length && data.codeUnitAt(ind)>='0'.codeUnitAt(0) && data.codeUnitAt(ind)<='9'.codeUnitAt(0)){
+      nr=nr*10+data.codeUnitAt(ind)-'0'.codeUnitAt(0);
+      ind++;
+    }
+    for(int i=1;i<=nr;i++){
+      String aux="";
+      while(ind<data.length && data.codeUnitAt(ind)!='"'.codeUnitAt(0))
+        ind++;
+      ind++;
+      while(ind<data.length && data.codeUnitAt(ind)!='"'.codeUnitAt(0)) {
+        aux+=data[ind];
+        ind++;
+      }
+      sInt a=new sInt();
+      a.titlu=aux;
+      aux=aux.replaceAll(" ", "");
+      String d1=await getFileData('assets/${aux}_intrebari.txt');
+      a.lint=getQuestions(d1);
+      ind++;
+      intrebari.add(a);
+      Book helperbook = bm.findByTitle(a.titlu);
+      ListaRecomandari.add(intrebareWidget(title: a.titlu, author: helperbook.author, read_pages: helperbook.readPages, total_pages: helperbook.pages,));
+    }
   }
 
   @override
