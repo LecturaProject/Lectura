@@ -9,7 +9,7 @@ books.txt -> descrie cartile din biblioteca utilizatorului
 
 In folderul books/ se gasesc N fisiere care descriu fiecare carte (titlu , autor , nr pagini citite/totale)->books/$titlu.txt
 
-##Structuri folosite in cadrul aplicatiei (assets)
+## Structuri folosite in cadrul aplicatiei (assets)
 
 assets/recomandate.txt -> descrie cartile recomandate de noi
           ->N numarul de carti pe fiecare linie , urmat de N linii cu titlul operelor , intre ghilimele
