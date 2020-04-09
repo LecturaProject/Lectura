@@ -9,19 +9,14 @@ import 'dart:io';
 import 'books.dart';
 import 'toWidget.dart';
 import 'intrebare.dart';
+import 'lista_intrebari.dart';
+
 void main() => runApp(MyApp());
-
-class sInt{
-    List<Intrebare>lint;
-    String titlu;
-}
-
-List<sInt>lIc;
 
 class MyApp extends StatelessWidget {
   final appTitle = 'lecTUra';
   void init() async {
-    lIc=new List<sInt>();
+    intrebari=new List<sInt>();
     String aux = await FileUtils.getFilePath;
     String data=await getFileData('assets/recomandate.txt');
     int ind=0,nr=0;
@@ -44,16 +39,9 @@ class MyApp extends StatelessWidget {
         String d1=await getFileData('assets/${aux}_intrebari.txt');
         a.lint=getQuestions(d1);
         ind++;
-        lIc.add(a);
+        intrebari.add(a);
     }
-    for(int i=0;i<lIc.length;i++){
-        print(lIc[i].titlu);
-        for(int j=0;j<lIc[i].lint.length;j++) {
-           print(lIc[i].lint[j].question);
-           for(int k=0;k<lIc[i].lint[j].answers.length;k++)
-              print(lIc[i].lint[j].answers[k]);
-        }
-    }
+    
     new Directory('$aux/books').create().then((Directory directory) {
     });
     bm = new bookManager();

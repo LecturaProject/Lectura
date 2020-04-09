@@ -8,4 +8,4 @@
 2
 'Un taran2'
 'Alt taran2'
-1
+2
