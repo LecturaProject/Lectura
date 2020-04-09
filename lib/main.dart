@@ -8,15 +8,53 @@ import 'book_manager.dart';
 import 'dart:io';
 import 'books.dart';
 import 'toWidget.dart';
-
+import 'intrebare.dart';
 void main() => runApp(MyApp());
+
+class sInt{
+    List<Intrebare>lint;
+    String titlu;
+}
+
+List<sInt>lIc;
 
 class MyApp extends StatelessWidget {
   final appTitle = 'lecTUra';
   void init() async {
+    lIc=new List<sInt>();
     String aux = await FileUtils.getFilePath;
+    String data=await getFileData('assets/recomandate.txt');
+    int ind=0,nr=0;
+    while(ind<data.length && data.codeUnitAt(ind)>='0'.codeUnitAt(0) && data.codeUnitAt(ind)<='9'.codeUnitAt(0)){
+        nr=nr*10+data.codeUnitAt(ind)-'0'.codeUnitAt(0);
+        ind++;
+    }
+    for(int i=1;i<=nr;i++){
+        String aux="";
+        while(ind<data.length && data.codeUnitAt(ind)!='"'.codeUnitAt(0))
+            ind++;
+        ind++;
+        while(ind<data.length && data.codeUnitAt(ind)!='"'.codeUnitAt(0)) {
+          aux+=data[ind];
+          ind++;
+        }
+        sInt a=new sInt();
+        a.titlu=aux;
+        aux=aux.replaceAll(" ", "");
+        String d1=await getFileData('assets/${aux}_intrebari.txt');
+        a.lint=getQuestions(d1);
+        ind++;
+        lIc.add(a);
+    }
+    for(int i=0;i<lIc.length;i++){
+        print(lIc[i].titlu);
+        for(int j=0;j<lIc[i].lint.length;j++) {
+           print(lIc[i].lint[j].question);
+           for(int k=0;k<lIc[i].lint[j].answers.length;k++)
+              print(lIc[i].lint[j].answers[k]);
+        }
+    }
     new Directory('$aux/books').create().then((Directory directory) {
-      print(directory.path);
     });
     bm = new bookManager();
     int k = 0, nb = 0;
@@ -27,7 +65,6 @@ class MyApp extends StatelessWidget {
       nb = nb * 10 + books.codeUnitAt(k) - '0'.codeUnitAt(0);
       k++;
     }
-    print(nb);
     for (int i = 1; i <= nb; i++) {
       String nume = "";
       while (k < books.length && books.codeUnitAt(k) != '"'.codeUnitAt(0)) k++;
@@ -41,14 +78,11 @@ class MyApp extends StatelessWidget {
       bm.addBook(newBook(content));
     }
     lastbook = bm.unfinishedBooks[0];
-    bm.printAll();
   }
 
   @override
   Widget build(BuildContext context) {
     init();
-    bm.printAll();
-
     return MaterialApp(
       title: appTitle,
       home: MyHomePage(title: appTitle),

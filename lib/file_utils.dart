@@ -1,5 +1,6 @@
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
+import 'package:flutter/services.dart' show rootBundle;
 
 class FileUtils{
   static Future<String> get getFilePath async{
@@ -27,6 +28,10 @@ class FileUtils{
     }
   }
 
+}
+
+Future<String> getFileData(String path) async {
+  return await rootBundle.loadString(path);
 }
 
 void saveText(String fileName,String text)async{
