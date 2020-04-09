@@ -1,16 +1,27 @@
 # lectura
 
-A new Flutter application.
+Aplicatie pentru management-ul cartilor citite sau in curs de citire . De asemenea , pentru unele carti din programa de BAC sau selectate de catre noi se gasesc si teste , in gen quiz , cu intrebari din fiecare opera. 
 
-## Getting Started
+## Structuri folosite in cadrul aplicatiei (fisiere)
 
-This project is a starting point for a Flutter application.
+books.txt -> descrie cartile din biblioteca utilizatorului
+          ->N numarul de carti pe fiecare linie , urmat de N linii cu titlul operelor , intre ghilimele
 
-A few resources to get you started if this is your first Flutter project:
+In folderul books/ se gasesc N fisiere care descriu fiecare carte (titlu , autor , nr pagini citite/totale)->books/$titlu.txt
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+##Structuri folosite in cadrul aplicatiei (assets)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+assets/recomandate.txt -> descrie cartile recomandate de noi
+          ->N numarul de carti pe fiecare linie , urmat de N linii cu titlul operelor , intre ghilimele
+                  
+assets/$titlu_intrebari.txt -> descrie intrebarile deja existente 
+                            -> pe prima linie N nr de intrebari
+                            -> urmeaza N secvente care descriu o intrebare
+                              ->'Intrebare'
+                              ->X : nr de raspunsuri posibile
+                                ->X linii cu fiecare raspuns ('raspuns')
+                              ->Y : indicele raspunsului corect
+
+Se gasesc exemple pentru structura in assets/
+
+
