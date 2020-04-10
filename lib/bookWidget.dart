@@ -17,7 +17,7 @@ class _bookCardState extends State<bookCard> {
   Widget build(BuildContext context) {
     return Card(
       color:  Colors.white,
-      elevation: 8,
+      elevation: 10,
       margin: EdgeInsets.symmetric(vertical: 10, horizontal: 8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -25,25 +25,34 @@ class _bookCardState extends State<bookCard> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(
-                widget.title ,
-                textAlign: TextAlign.left,
-                overflow: TextOverflow.ellipsis,
-                style: new TextStyle(
-                  fontSize: 35,
-                  fontFamily: 'Julius',
-                  fontWeight: FontWeight.bold,
-                ),
+              Row(
+                children: <Widget>[
+                  Text(
+                      widget.title ,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: new TextStyle(
+                        fontSize: 25,
+                        fontFamily: 'Julius',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+
+                ],
               ),
-              Text(
-                widget.author,
-                textAlign: TextAlign.left,
-                overflow: TextOverflow.ellipsis,
-                style: new TextStyle(
-                  fontSize: 20,
-                  fontFamily: 'Julius',
-                  fontWeight: FontWeight.bold,
-                ),
+              Row(
+                children: <Widget>[
+                  Text(
+                      widget.author ,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: new TextStyle(
+                        fontSize: 18,
+                        fontFamily: 'Julius',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                ],
               ),
             ],
           ),

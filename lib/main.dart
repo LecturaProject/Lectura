@@ -11,6 +11,7 @@ import 'intrebare.dart';
 import 'lista_intrebari.dart';
 import 'intrebari.dart';
 import 'package:lectura/IntrebariWidget.dart';
+import 'package:page_transition/page_transition.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -150,7 +151,8 @@ class MyHomePage extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Biblioteca()),
+                  PageTransition(type: PageTransitionType.fade,
+                      child: Biblioteca()),
                 );
               },
             ),
@@ -162,7 +164,8 @@ class MyHomePage extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Intrebari()),
+                  PageTransition(type: PageTransitionType.fade,
+                      child: Intrebari()),
                 );
               },
             ),
@@ -174,7 +177,8 @@ class MyHomePage extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Progres()),
+                  PageTransition(type: PageTransitionType.fade,
+                      child: Progres()),
                 );
               },
             ),

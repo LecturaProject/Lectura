@@ -4,6 +4,7 @@ import 'book_manager.dart';
 import 'quizz.dart';
 import 'books.dart';
 import 'lista_intrebari.dart';
+import 'package:page_transition/page_transition.dart';
 class intrebareWidget extends StatelessWidget {
   String title;
   String author;
@@ -48,9 +49,11 @@ class intrebareWidget extends StatelessWidget {
               sInt helper2 = intrebari[0].findSintByTitle(title);
               print(helper2.titlu);
               indice_intrebare = 0;
+              score = 0;
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => quizz_game( thisSet: helper2,)),
+                PageTransition(type: PageTransitionType.fade,
+                    child: quizz_game( thisSet: helper2,)),
               );
             },
           ),

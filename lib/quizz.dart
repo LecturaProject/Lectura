@@ -19,11 +19,14 @@ class _quizz_gameState extends State<quizz_game> {
   void init()
   {
     ListaIntrebariWidget.clear();
+    print(indice_intrebare);
+    print(widget.thisSet.lint[indice_intrebare].correct);
+
     for(int i = 0 ; i < widget.thisSet.lint[indice_intrebare].answers.length ; i ++)
       {
-        ListaIntrebariWidget.add( raspuns_widget(answer : widget.thisSet.lint[indice_intrebare].answers[i], is_corect : (widget.thisSet.lint[indice_intrebare].correct == i), thisSet: widget.thisSet,));
+        ListaIntrebariWidget.add( raspuns_widget(answer : widget.thisSet.lint[indice_intrebare].answers[i], is_corect : (widget.thisSet.lint[indice_intrebare].correct == i + 1), thisSet: widget.thisSet,));
         print(widget.thisSet.lint[indice_intrebare].answers[i]);
-        print((widget.thisSet.lint[indice_intrebare].correct == i));
+        print((widget.thisSet.lint[indice_intrebare].correct == i + 1));
       }
   }
   @override

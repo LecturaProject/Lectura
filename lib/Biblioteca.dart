@@ -3,7 +3,7 @@ import 'bookWidget.dart';
 import 'book_manager.dart';
 import 'toWidget.dart';
 import 'books.dart';
-
+import 'package:page_transition/page_transition.dart';
 TextStyle stil20 = new TextStyle(
   fontSize: 20,
   fontFamily: 'Julius',
@@ -134,7 +134,8 @@ class Biblioteca extends StatelessWidget {
                               Navigator.pop(context);
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => Biblioteca()),
+                                PageTransition(type: PageTransitionType.fade,
+                                    child: Biblioteca()),
                               );
                             },
                           ),
