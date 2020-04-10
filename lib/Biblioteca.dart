@@ -131,6 +131,11 @@ class Biblioteca extends StatelessWidget {
                               newbook.pages = int.parse(pageController4.text);
                               bm.addBook(newbook);
                               Navigator.pop(context);
+                              Navigator.pop(context);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Biblioteca()),
+                              );
                             },
                           ),
                         )

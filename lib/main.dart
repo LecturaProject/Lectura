@@ -42,7 +42,10 @@ class MyApp extends StatelessWidget {
       String content = await FileUtils.readFromFile('books/$nume.txt');
       bm.addBook(newBook(content));
     }
+    if(bm.unfinishedBooks.length > 0)
     lastbook = bm.unfinishedBooks[0];
+    else
+      lastbook = new Book.fromEmpty();
 
     while(ind<data.length && data.codeUnitAt(ind)>='0'.codeUnitAt(0) && data.codeUnitAt(ind)<='9'.codeUnitAt(0)){
       nr=nr*10+data.codeUnitAt(ind)-'0'.codeUnitAt(0);
