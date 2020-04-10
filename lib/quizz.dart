@@ -5,7 +5,7 @@ import 'lista_intrebari.dart';
 import 'package:lectura/IntrebariWidget.dart';
 import 'raspuns_widget.dart';
 class quizz_game extends StatefulWidget {
-  sInt thisSet;
+  sInt thisSet ;
   quizz_game({this.thisSet});
   @override
   _quizz_gameState createState() => new _quizz_gameState();

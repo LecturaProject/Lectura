@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lectura/raspuns_widget.dart';
 import 'book_manager.dart';
 import 'quizz.dart';
 import 'books.dart';
@@ -44,11 +45,12 @@ class intrebareWidget extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.book),
             onPressed: () {
-              sInt helper = intrebari[0].findSintByTitle(title);
-              print(helper.titlu);
+              sInt helper2 = intrebari[0].findSintByTitle(title);
+              print(helper2.titlu);
+              indice_intrebare = 0;
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => quizz_game( thisSet: helper,)),
+                MaterialPageRoute(builder: (context) => quizz_game( thisSet: helper2,)),
               );
             },
           ),
