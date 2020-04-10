@@ -19,8 +19,6 @@ class MyApp extends StatelessWidget {
     String aux = await FileUtils.getFilePath;
     String data=await getFileData('assets/recomandate.txt');
     int ind=0,nr=0;
-
-    
     new Directory('$aux/books').create().then((Directory directory) {
     });
     bm = new bookManager();
@@ -51,7 +49,7 @@ class MyApp extends StatelessWidget {
       ind++;
     }
     for(int i=1;i<=nr;i++){
-      String aux="";
+      String aux="",aux2="";
       while(ind<data.length && data.codeUnitAt(ind)!='"'.codeUnitAt(0))
         ind++;
       ind++;
@@ -59,15 +57,26 @@ class MyApp extends StatelessWidget {
         aux+=data[ind];
         ind++;
       }
+      ind++;
+      while(ind<data.length && data.codeUnitAt(ind)!='"'.codeUnitAt(0))
+        ind++;
+      ind++;
+      while(ind<data.length && data.codeUnitAt(ind)!='"'.codeUnitAt(0)) {
+        aux2+=data[ind];
+        ind++;
+      }
+      ind++;
       sInt a=new sInt();
       a.titlu=aux;
+      a.autor=aux2;
+      print(a.titlu);
+      print(a.autor);
       aux=aux.replaceAll(" ", "");
       String d1=await getFileData('assets/${aux}_intrebari.txt');
       a.lint=getQuestions(d1);
-      ind++;
       intrebari.add(a);
       Book helperbook = bm.findByTitle(a.titlu);
-      ListaRecomandari.add(intrebareWidget(title: a.titlu, author: helperbook.author, read_pages: helperbook.readPages, total_pages: helperbook.pages,));
+      ListaRecomandari.add(intrebareWidget(title: a.titlu, author: a.autor, read_pages: helperbook.readPages, total_pages: helperbook.pages,));
     }
   }
 

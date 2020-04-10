@@ -21,11 +21,13 @@ class Biblioteca extends StatelessWidget {
     for (int i = 0; i < bm.unfinishedBooks.length; i++) {
       listawid.add(bookCard(
         title: bm.unfinishedBooks[i].name,
+        author: bm.unfinishedBooks[i].author,
       ));
     }
     for (int i = 0; i < bm.finishedBooks.length; i++) {
       listagata.add(bookCard(
         title: bm.finishedBooks[i].name,
+        author: bm.finishedBooks[i].author,
       ));
     }
   }
@@ -90,7 +92,7 @@ class Biblioteca extends StatelessWidget {
                       children: <Widget>[
                         Padding(
                           padding:
-                              EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                          EdgeInsets.symmetric(vertical: 0, horizontal: 10),
                           child: TextFormField(
                             decoration: new InputDecoration.collapsed(
                                 hintText: 'Titlu',hintStyle: stil20),
@@ -99,10 +101,10 @@ class Biblioteca extends StatelessWidget {
                         ),
                         Padding(
                           padding:
-                              EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                          EdgeInsets.symmetric(vertical: 0, horizontal: 10),
                           child: TextFormField(
                             decoration: new InputDecoration.collapsed(
-                                hintText: 'Autor',hintStyle: stil20,),
+                              hintText: 'Autor',hintStyle: stil20,),
                             controller: pageController3,
                           ),
                         ),

@@ -48,6 +48,7 @@ flutter:
     - assets/recomandate.txt
     - assets/Ion_intrebari.txt
     - assets/Moaracunoroc_intrebari.txt
+    - assets/Ok_intrebari.txt
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg
