@@ -12,6 +12,8 @@ import 'lista_intrebari.dart';
 import 'intrebari.dart';
 import 'package:lectura/IntrebariWidget.dart';
 import 'package:page_transition/page_transition.dart';
+import 'notite.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -22,6 +24,14 @@ class MyApp extends StatelessWidget {
     int ind=0,nr=0;
     new Directory('$aux/books').create().then((Directory directory) {
     });
+    await addNotita('Jhon','Notita2', 'Vlad Cioara');
+    await addNotita('Jhon','Notita3', 'Vlad Cioara3');
+
+    List<Notita> ln=await getNotite('Jhon');
+    for(int i=0;i<ln.length;i++){
+        print(ln[i].titlu);
+        print(ln[i].content);
+    }
     bm = new bookManager();
     int k = 0, nb = 0;
     String books = await FileUtils.readFromFile("books.txt");
