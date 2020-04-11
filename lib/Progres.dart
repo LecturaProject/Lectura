@@ -38,6 +38,8 @@ class _ProgresState extends State<Progres> {
                   padding: const EdgeInsets.symmetric(vertical:1 , horizontal: 10),
                   child: Text(
                     bookTitle,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
                     textAlign: TextAlign.center,
                     style: new TextStyle(
                       fontSize: 30,
@@ -58,6 +60,7 @@ class _ProgresState extends State<Progres> {
                   child: Text(
                     'de',
                     textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
                     style: new TextStyle(
                       fontSize: 15,
                       fontFamily: 'Julius',
@@ -77,6 +80,7 @@ class _ProgresState extends State<Progres> {
                   child: Text(
                     bookAuthor,
                     textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
                     style: new TextStyle(
                       fontSize: 30,
                       fontFamily: 'Julius',

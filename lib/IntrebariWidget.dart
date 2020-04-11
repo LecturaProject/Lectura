@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:lectura/raspuns_widget.dart';
 import 'book_manager.dart';
 import 'quizz.dart';
 import 'books.dart';
 import 'lista_intrebari.dart';
+import 'package:page_transition/page_transition.dart';
 class intrebareWidget extends StatelessWidget {
   String title;
   String author;
@@ -44,15 +46,14 @@ class intrebareWidget extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.book),
             onPressed: () {
-              Book thisbook = new Book.fromEmpty();
-              thisbook.name = title;
-              thisbook.author = author;
-              thisbook.pages = total_pages;
-              thisbook.readPages = read_pages;
-              sInt helper = intrebari[0].findSintByTitle(title);
+              sInt helper2 = intrebari[0].findSintByTitle(title);
+              print(helper2.titlu);
+              indice_intrebare = 0;
+              score = 0;
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => quizz_game(quizz_book: thisbook, thisSet: helper,)),
+                PageTransition(type: PageTransitionType.fade,
+                    child: quizz_game( thisSet: helper2,)),
               );
             },
           ),

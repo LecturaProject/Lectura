@@ -1,7 +1,7 @@
 2
 'Cine este Ion?'
 3
-'Un taran'
+'Fiul lui Alexandru Glanetasu'
 'Alt taran'
 'Cainamisir'
 1

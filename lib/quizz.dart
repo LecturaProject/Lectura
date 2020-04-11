@@ -3,10 +3,10 @@ import 'books.dart';
 import 'book_manager.dart';
 import 'lista_intrebari.dart';
 import 'package:lectura/IntrebariWidget.dart';
+import 'raspuns_widget.dart';
 class quizz_game extends StatefulWidget {
-  sInt thisSet;
-  Book quizz_book;
-  quizz_game({this.quizz_book,this.thisSet});
+  sInt thisSet ;
+  quizz_game({this.thisSet});
   @override
   _quizz_gameState createState() => new _quizz_gameState();
 }
@@ -16,8 +16,23 @@ TextStyle stil20 = new TextStyle(
   fontWeight: FontWeight.bold,
 );
 class _quizz_gameState extends State<quizz_game> {
+  void init()
+  {
+    ListaIntrebariWidget.clear();
+    print(indice_intrebare);
+    print(widget.thisSet.lint[indice_intrebare].correct);
+
+    for(int i = 0 ; i < widget.thisSet.lint[indice_intrebare].answers.length ; i ++)
+      {
+        ListaIntrebariWidget.add( raspuns_widget(answer : widget.thisSet.lint[indice_intrebare].answers[i], is_corect : (widget.thisSet.lint[indice_intrebare].correct == i + 1), thisSet: widget.thisSet,));
+        print(widget.thisSet.lint[indice_intrebare].answers[i]);
+        print((widget.thisSet.lint[indice_intrebare].correct == i + 1));
+      }
+  }
   @override
   Widget build(BuildContext context) {
+    init();
+    globalpressed = false;
     return new Scaffold(
       appBar: AppBar(
         title: Text(
@@ -34,7 +49,7 @@ class _quizz_gameState extends State<quizz_game> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 0),
               child: Text(
-                  widget.quizz_book.name,
+                  widget.thisSet.titlu,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: 40,
@@ -51,7 +66,7 @@ class _quizz_gameState extends State<quizz_game> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 0,horizontal: 0),
               child: Text(
-                  widget.quizz_book.author,
+                  widget.thisSet.autor,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: 20,
@@ -62,6 +77,9 @@ class _quizz_gameState extends State<quizz_game> {
             ),
           ],
         ),
+        SizedBox(
+          height: 30,
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
@@ -70,16 +88,27 @@ class _quizz_gameState extends State<quizz_game> {
               padding: const EdgeInsets.symmetric(vertical: 5,horizontal: 5),
                 child: Text(
                   widget.thisSet.lint[0].question,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 25,
                     fontFamily: 'Julius',
+                    fontWeight: FontWeight.bold,
                   )
                     ,
                 ),
               ),
             )
           ],
-        )
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children:
+              ListaIntrebariWidget
+        ),
       ],
     ),
     );
