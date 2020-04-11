@@ -1,6 +1,6 @@
 import 'file_utils.dart';
 import 'dart:io';
-
+import 'dart:async';
 class Notita{
     String titlu="";
     String content="";
@@ -28,19 +28,12 @@ void addNotita(String carte,String titlu,String content)async{
         ind++;
       }
       ind++;
-      print("Straux : ");
-      print(straux);
       rez+='\"$straux\"\n';
   }
   var date=new DateTime.now();
-
-  print(date.toString());
-
   rez+="\"${date.toString()}\"";
   saveText('books/$carte/notite.txt',rez);
   saveText('books/$carte/${date.toString()}.txt', '"$titlu"\n'+content);
-  print("Rez: ");
-  print('"$titlu"\n'+content);
 }
 
 Future<List<Notita>> getNotite(String carte)async{

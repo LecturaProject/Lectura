@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'book_manager.dart';
+import 'notite.dart';
 class bookCard extends StatefulWidget {
   String title;
   String author;
@@ -62,9 +63,11 @@ class _bookCardState extends State<bookCard> {
                 color: Color.fromRGBO(40, 234, 221, 1),
                 size: 40,
               ),
-              onPressed: ()
-              {
+              onPressed: () async{
                 lastbook =  bm.findByTitle(widget.title);
+                List<Notita>listaNotite=await getNotite(widget.title.replaceAll(' ','').trim());/*
+                    Aici prelucrezi lista daca vrei sau o dai ca parametru unei pagini noi
+                */
               }
           )
         ],

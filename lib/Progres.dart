@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'books.dart';
 import 'book_manager.dart';
+import 'notite.dart';
 import 'package:page_transition/page_transition.dart';
 class Progres extends StatefulWidget {
   @override
@@ -245,10 +246,15 @@ class _ProgresState extends State<Progres> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: RaisedButton(
                                     child: Text("Am terminat!"),
-
-                                    onPressed: () {
+                                    onPressed: () async{
                                       if (_formKey.currentState.validate()) {
                                         _formKey.currentState.save();
+                                      }
+                                      await addNotita(lastbook.name.replaceAll(" ","").trim(),pageController.text,pageController2.text);
+                                      List<Notita>ln=await getNotite('Jhon');
+                                      for(int i=0;i<ln.length;i++){
+                                        print(ln[i].titlu);
+                                        print(ln[i].content);
                                       }
                                       Navigator.pop(context);
                                     },
