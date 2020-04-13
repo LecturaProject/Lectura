@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:lectura/notite_pagina.dart';
 import 'book_manager.dart';
 import 'notite.dart';
+import 'package:page_transition/page_transition.dart';
 class bookCard extends StatefulWidget {
   String title;
   String author;
@@ -68,6 +70,12 @@ class _bookCardState extends State<bookCard> {
                 List<Notita>listaNotite=await getNotite(widget.title.replaceAll(' ','').trim());/*
                     Aici prelucrezi lista daca vrei sau o dai ca parametru unei pagini noi
                 */
+                Navigator.push(
+                  context,
+                  PageTransition(type: PageTransitionType.fade,
+                      child: pagina_notite(listaNotite: listaNotite, title: widget.title,)),
+                );
+
               }
           )
         ],
