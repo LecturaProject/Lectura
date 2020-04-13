@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lectura/raspuns_widget.dart';
 import 'books.dart';
 import 'book_manager.dart';
 import 'notite.dart';
@@ -23,6 +24,10 @@ class _ProgresState extends State<Progres> {
   String bookTitle = lastbook.name;
   String bookAuthor = lastbook.author;
   Widget build(BuildContext context) {
+    if (lastbook == new Book.fromEmpty()){
+      lastbook = bm.unfinishedBooks[0];
+      indice_intrebare = 0;
+  }
     return new Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
